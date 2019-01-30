@@ -1,4 +1,4 @@
-class MyCalendar { // 78%
+	class MyCalendar { // 78%
     TreeMap<Integer, Integer> books; //start和end的键值对
 
     public MyCalendar() {
