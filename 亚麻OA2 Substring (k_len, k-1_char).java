@@ -16,7 +16,7 @@ public class KLengthLess {
                     else break; // Not first repeat, meaning this substring is not target
                     isRepeated = true; // Set flag. KEY is that: we don't want this flag to be set true twice
                 } else {
-                    occurrence.put(char, 1);
+                    occurrence.put(c, 1);
                 }
             }
 
