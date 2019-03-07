@@ -6,9 +6,54 @@
  *     ListNode(int x) { val = x; }
  * }
  */
-class Solution { // 17%
+class Solution {
+    
+    public ListNode addTwoNumbers(ListNode l1, ListNode l2) { // 76, 13
+        Stack<Integer> s1 = new Stack<Integer>();
+        Stack<Integer> s2 = new Stack<Integer>();
+        
+        while (l1 != null) {
+            s1.push(l1.val);
+            l1 = l1.next;
+        }
+        while (l2 != null) {
+            s2.push(l2.val);
+            l2 = l2.next;
+        }
+        
+        int carry = 0; // 进位
+        int num1, num2;
+        ListNode last = null;
+        ListNode cur = null;
+        while (!s1.isEmpty() || !s2.isEmpty()) {
+            // Construct answer from tail to head
+            num1 = s1.isEmpty() ? 0 : s1.pop();
+            num2 = s2.isEmpty() ? 0 : s2.pop();
+            
+            cur = new ListNode((num1 + num2 + carry) % 10);
+            carry = (num1 + num2 + carry) / 10;
+            cur.next = last;
+            last = cur;
+        }
+        if (carry != 0) {
+            cur = new ListNode(carry);
+            cur.next = last;
+        }
+        return cur;
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    /*
+    // Old Answer
     // Reverse lists -> fit into LeetCode 2 -> reverse back
-    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+    public ListNode addTwoNumbers(ListNode l1, ListNode l2) { // 17
         l1 = reverseList(l1);
         l2 = reverseList(l2);
         return reverseList(addTwoNumbersI(l1, l2));
@@ -91,4 +136,5 @@ class Solution { // 17%
         }
         return ans;
     }
+    */
 }
